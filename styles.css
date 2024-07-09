@@ -34,16 +34,7 @@ section {
 .project, .team-member {
     margin-bottom: 1em;
 }
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-    position: fixed;
-    width: 80%;
-    bottom: 0;
-}
+ 
 
 form {
     display: flex;
