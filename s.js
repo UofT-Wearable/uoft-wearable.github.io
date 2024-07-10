@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'custom.env' });
 
 const express = require('express');
 const nodemailer = require('nodemailer');
