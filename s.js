@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
@@ -20,7 +21,6 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Route to handle contact form submissions
 app.post('/send-email', async (req, res) => {
     const { name, email, message } = req.body;
 
@@ -52,7 +52,8 @@ app.post('/send-email', async (req, res) => {
         // Send mail
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                return console.log(error);
+                console.error('Error sending email:', error);
+                return res.status(500).send('Internal Server Error');
             }
             console.log('Message sent: %s', info.messageId);
             res.send('Email has been sent successfully.');
